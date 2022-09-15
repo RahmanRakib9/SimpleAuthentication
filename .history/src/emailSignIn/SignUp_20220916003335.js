@@ -19,12 +19,7 @@ const SignUp = () => {
 
   //create user when form submit successfully
   const onSubmit = (data) => {
-    createUserWithEmailAndPassword(data.email, data.password);
-  };
-
-  // reload the page if an error occur
-  const relodeWindow = () => {
-    window.location.reload();
+    createUserWithEmailAndPassword(data.email,data)
   };
 
   return (
@@ -37,11 +32,11 @@ const SignUp = () => {
 
         <form onSubmit={handleSubmit(onSubmit)}>
           {/* email field start from here */}
-          <div className="form-control w-full max-w-xs">
+          <div class="form-control w-full max-w-xs">
             <input
               type="email"
               placeholder="Email"
-              className="input input-bordered w-full max-w-xs"
+              class="input input-bordered w-full max-w-xs"
               {...register("email", {
                 pattern: {
                   value: /\S+@\S+\.\S+/,
@@ -54,7 +49,7 @@ const SignUp = () => {
               })}
             />
             {/* label for display email related errors */}
-            <label className="label">
+            <label class="label">
               {errors.email?.type === "required" && (
                 <span className="label-text-alt text-red-500">
                   {errors.email.message}
@@ -69,7 +64,7 @@ const SignUp = () => {
           </div>
 
           {/* password field */}
-          <div className="form-control w-full max-w-xs">
+          <div class="form-control w-full max-w-xs">
             <input
               type="password"
               placeholder="Email"
@@ -86,7 +81,7 @@ const SignUp = () => {
               })}
             />
             {/* label for display password related errors */}
-            <label className="label">
+            <label class="label">
               {errors.password?.type === "required" && (
                 <span className="label-text-alt text-red-500">
                   {errors.password.message}
@@ -99,27 +94,6 @@ const SignUp = () => {
               )}
             </label>
           </div>
-
-          {/* if loading */}
-          {loading ? (
-            <p className="text-primary text-center mb-3">Processing.....</p>
-          ) : (
-            ""
-          )}
-
-          {/* if an error */}
-          {error ? (
-            <p>
-              <p className="text-red-500 hover:underline">
-                {error?.message}{" "}
-                <Link to="/" onClick={relodeWindow}>
-                  Go back
-                </Link>
-              </p>
-            </p>
-          ) : (
-            ""
-          )}
 
           <input type="submit" className="btn btn-primary w-full" />
         </form>

@@ -1,13 +1,13 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
-import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
+import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import auth from "../firebase/firebase.config";
 
-const SignUp = () => {
+const SignIn = () => {
   // react firebase hook for create user with email
-  const [createUserWithEmailAndPassword, user, loading, error] =
-    useCreateUserWithEmailAndPassword(auth);
+  const [signInWithEmailAndPassword, user, loading, error] =
+    useSignInWithEmailAndPassword(auth);
 
   //react hook form
   const {
@@ -19,29 +19,28 @@ const SignUp = () => {
 
   //create user when form submit successfully
   const onSubmit = (data) => {
-    createUserWithEmailAndPassword(data.email, data.password);
+    signInWithEmailAndPassword(data.email, data.password);
   };
 
   // reload the page if an error occur
   const relodeWindow = () => {
     window.location.reload();
   };
-
   return (
     <section className="flex justify-center items-center h-screen">
+      {/* <h1>Create a New Account</h1> */}
       <div>
         <div className="text-center">
-          <h1 className="mb-7 font-bold">Create a New Account</h1>
-          <h4 className="mb-3">Sign up with your email and a password.</h4>
+          <h1 className="mb-7 font-bold">Sign In</h1>
+          <h4 className="mb-3">Enter your email address and password.</h4>
         </div>
-
         <form onSubmit={handleSubmit(onSubmit)}>
           {/* email field start from here */}
           <div className="form-control w-full max-w-xs">
             <input
               type="email"
               placeholder="Email"
-              className="input input-bordered w-full max-w-xs"
+              class="input input-bordered w-full max-w-xs"
               {...register("email", {
                 pattern: {
                   value: /\S+@\S+\.\S+/,
@@ -99,6 +98,10 @@ const SignUp = () => {
               )}
             </label>
           </div>
+          {/* forget password field */}
+          <p className="mb-2 hover:underline text-center">
+            <Link to="/resetPassword">Forgot your password?</Link>
+          </p>
 
           {/* if loading */}
           {loading ? (
@@ -124,11 +127,11 @@ const SignUp = () => {
           <input type="submit" className="btn btn-primary w-full" />
         </form>
         <p className="mt-2 hover:underline ">
-          <Link to="/login">Already Have An Account?Please Sign In</Link>
+          <Link to="/register">Don’t have an account yet? Sign up</Link>
         </p>
       </div>
     </section>
   );
 };
 
-export default SignUp;
+export default SignIn;

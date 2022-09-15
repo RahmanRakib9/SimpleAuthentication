@@ -1,6 +1,5 @@
 import React from "react";
 import { useSignInWithGithub } from "react-firebase-hooks/auth";
-import { Link } from "react-router-dom";
 import auth from "../firebase/firebase.config";
 
 const Github = () => {

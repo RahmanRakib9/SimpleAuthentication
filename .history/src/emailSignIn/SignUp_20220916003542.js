@@ -22,10 +22,10 @@ const SignUp = () => {
     createUserWithEmailAndPassword(data.email, data.password);
   };
 
-  // reload the page if an error occur
-  const relodeWindow = () => {
-    window.location.reload();
-  };
+  if(loading){
+    return <p className="text-primary">Processing.....</p>;
+
+  }
 
   return (
     <section className="flex justify-center items-center h-screen">
@@ -99,27 +99,6 @@ const SignUp = () => {
               )}
             </label>
           </div>
-
-          {/* if loading */}
-          {loading ? (
-            <p className="text-primary text-center mb-3">Processing.....</p>
-          ) : (
-            ""
-          )}
-
-          {/* if an error */}
-          {error ? (
-            <p>
-              <p className="text-red-500 hover:underline">
-                {error?.message}{" "}
-                <Link to="/" onClick={relodeWindow}>
-                  Go back
-                </Link>
-              </p>
-            </p>
-          ) : (
-            ""
-          )}
 
           <input type="submit" className="btn btn-primary w-full" />
         </form>

@@ -22,11 +22,6 @@ const SignUp = () => {
     createUserWithEmailAndPassword(data.email, data.password);
   };
 
-  // reload the page if an error occur
-  const relodeWindow = () => {
-    window.location.reload();
-  };
-
   return (
     <section className="flex justify-center items-center h-screen">
       <div>
@@ -108,18 +103,11 @@ const SignUp = () => {
           )}
 
           {/* if an error */}
-          {error ? (
-            <p>
-              <p className="text-red-500 hover:underline">
-                {error?.message}{" "}
-                <Link to="/" onClick={relodeWindow}>
-                  Go back
-                </Link>
-              </p>
-            </p>
-          ) : (
-            ""
-          )}
+            {
+              error
+            }
+
+
 
           <input type="submit" className="btn btn-primary w-full" />
         </form>

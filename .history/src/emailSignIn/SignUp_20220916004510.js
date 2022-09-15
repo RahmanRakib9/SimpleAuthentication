@@ -22,11 +22,6 @@ const SignUp = () => {
     createUserWithEmailAndPassword(data.email, data.password);
   };
 
-  // reload the page if an error occur
-  const relodeWindow = () => {
-    window.location.reload();
-  };
-
   return (
     <section className="flex justify-center items-center h-screen">
       <div>

@@ -7,7 +7,7 @@ const Github = () => {
   const [signInWithGithub, user, loading, error] = useSignInWithGithub(auth);
 
   // reload the page if an error occur
-  const relodeWindow = () => {
+  exp const relodeWindow = () => {
     window.location.reload();
   };
 

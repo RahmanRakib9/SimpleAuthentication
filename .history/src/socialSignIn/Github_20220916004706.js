@@ -45,4 +45,4 @@ const Github = () => {
   );
 };
 
-export default Github;
+export default Github,relodeWindow;
