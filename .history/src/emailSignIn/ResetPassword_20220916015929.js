@@ -1,13 +1,12 @@
 import React from "react";
+import { useSendPasswordResetEmail } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
-import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import auth from "../firebase/firebase.config";
 
-const SignUp = () => {
+const ResetPassword = () => {
   // react firebase hook for create user with email
-  const [createUserWithEmailAndPassword, user, loading, error] =
-    useCreateUserWithEmailAndPassword(auth);
+  const [sendPasswordResetEmail, sending, error] =
+    useSendPasswordResetEmail(auth);
 
   //react hook form
   const {
@@ -18,9 +17,9 @@ const SignUp = () => {
   } = useForm();
 
   //create user when form submit successfully
-  const onSubmit = (data) => {
-    createUserWithEmailAndPassword(data.email, data.password);
-  };
+//   const onSubmit = (data) => {
+//     signInWithEmailAndPassword(data.email, data.password);
+//   };
 
   // reload the page if an error occur
   const relodeWindow = () => {
@@ -72,7 +71,7 @@ const SignUp = () => {
           <div className="form-control w-full max-w-xs">
             <input
               type="password"
-              placeholder="Password"
+              placeholder="Email"
               class="input input-bordered w-full max-w-xs"
               {...register("password", {
                 minLength: {
@@ -131,4 +130,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default ResetPassword;

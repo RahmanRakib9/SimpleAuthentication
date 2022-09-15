@@ -1,13 +1,12 @@
 import React from "react";
+import { useSendPasswordResetEmail } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
-import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import auth from "../firebase/firebase.config";
 
-const SignUp = () => {
+const ResetPassword = () => {
   // react firebase hook for create user with email
-  const [createUserWithEmailAndPassword, user, loading, error] =
-    useCreateUserWithEmailAndPassword(auth);
+  const [sendPasswordResetEmail, sending, error] =
+    useSendPasswordResetEmail(auth);
 
   //react hook form
   const {
@@ -19,7 +18,7 @@ const SignUp = () => {
 
   //create user when form submit successfully
   const onSubmit = (data) => {
-    createUserWithEmailAndPassword(data.email, data.password);
+    console.log(data);
   };
 
   // reload the page if an error occur
@@ -31,8 +30,10 @@ const SignUp = () => {
     <section className="flex justify-center items-center h-screen">
       <div>
         <div className="text-center">
-          <h1 className="mb-7 font-bold">Create a New Account</h1>
-          <h4 className="mb-3">Sign up with your email and a password.</h4>
+          <h1 className="mb-7 font-bold">Reset Your Password</h1>
+          <h4 className="mb-3 ">
+            To Reset your Password,enter the email address you use to sign in
+          </h4>
         </div>
 
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -72,7 +73,7 @@ const SignUp = () => {
           <div className="form-control w-full max-w-xs">
             <input
               type="password"
-              placeholder="Password"
+              placeholder="Email"
               class="input input-bordered w-full max-w-xs"
               {...register("password", {
                 minLength: {
@@ -100,35 +101,11 @@ const SignUp = () => {
             </label>
           </div>
 
-          {/* if loading */}
-          {loading ? (
-            <p className="text-primary text-center mb-3">Processing.....</p>
-          ) : (
-            ""
-          )}
-
-          {/* if an error */}
-          {error ? (
-            <p>
-              <p className="text-red-500 hover:underline">
-                {error?.message}{" "}
-                <Link to="/" onClick={relodeWindow}>
-                  Go back
-                </Link>
-              </p>
-            </p>
-          ) : (
-            ""
-          )}
-
           <input type="submit" className="btn btn-primary w-full" />
         </form>
-        <p className="mt-2 hover:underline ">
-          <Link to="/login">Already Have An Account?Please Sign In</Link>
-        </p>
       </div>
     </section>
   );
 };
 
-export default SignUp;
+export default ResetPassword;
