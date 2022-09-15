@@ -8,8 +8,8 @@ const Google = () => {
   if (user) {
     console.log(user);
   }
-  if (loading) {
-    return <p>loading...</p>;
+  if(loading){
+    <p></p>
   }
 
   return (

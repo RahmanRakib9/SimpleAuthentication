@@ -5,11 +5,8 @@ import auth from "../firebase/firebase.config";
 const Google = () => {
   const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
 
-  if (user) {
+  if(user){
     console.log(user);
-  }
-  if (loading) {
-    return <p>loading...</p>;
   }
 
   return (
