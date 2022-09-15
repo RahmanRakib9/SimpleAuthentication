@@ -6,27 +6,21 @@ import auth from "../firebase/firebase.config";
 const Google = () => {
   const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
 
-  // reload the page if an error occur
   const relodeWindow = () => {
     window.location.reload();
   };
 
-  // if user sign in successfully
   if (user) {
     console.log(user);
   }
-
-  // if Processing
   if (loading) {
-    return <p className="text-primary">Processing.....</p>;
+    return <p>loading...</p>;
   }
-
-  // if an error
   if (error) {
     return (
-      <p className="text-red-500 hover:underline">
+      <p className="text-red-500">
         {error?.message}{" "}
-        <Link to="/" onClick={relodeWindow}>
+        <Link to="/" className="hover:underline" on>
           Go back
         </Link>
       </p>

@@ -5,17 +5,6 @@ import auth from "../firebase/firebase.config";
 const Github = () => {
   const [signInWithGithub, user, loading, error] = useSignInWithGithub(auth);
 
-  if (user) {
-    console.log(user);
-  }
-  if (loading) {
-    return <p>loading...</p>;
-  }
-
-  if (error) {
-    return <p>{error}</p>;
-  }
-
   return (
     <div>
       <button

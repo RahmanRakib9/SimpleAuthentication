@@ -8,13 +8,7 @@ const Github = () => {
   if (user) {
     console.log(user);
   }
-  if (loading) {
-    return <p>loading...</p>;
-  }
-
-  if (error) {
-    return <p>{error}</p>;
-  }
+  if()
 
   return (
     <div>

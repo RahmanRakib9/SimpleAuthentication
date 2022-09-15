@@ -1,27 +1,12 @@
 import React from "react";
 import { useSignInWithGithub } from "react-firebase-hooks/auth";
-import auth from "../firebase/firebase.config";
 
 const Github = () => {
   const [signInWithGithub, user, loading, error] = useSignInWithGithub(auth);
 
-  if (user) {
-    console.log(user);
-  }
-  if (loading) {
-    return <p>loading...</p>;
-  }
-
-  if (error) {
-    return <p>{error}</p>;
-  }
-
   return (
     <div>
-      <button
-        className="btn btn-primary w-full mt-3"
-        onClick={() => signInWithGithub()}
-      >
+      <button className="btn btn-primary w-full mt-3">
         Sign In With GitHub
       </button>
     </div>

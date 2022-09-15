@@ -13,7 +13,7 @@ const Github = () => {
   }
 
   if (error) {
-    return <p>{error}</p>;
+    return <p>{error.message}</p>;
   }
 
   return (

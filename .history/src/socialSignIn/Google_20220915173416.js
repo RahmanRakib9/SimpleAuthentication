@@ -21,7 +21,7 @@ const Google = () => {
     return <p className="text-primary">Processing.....</p>;
   }
 
-  // if an error
+  // 
   if (error) {
     return (
       <p className="text-red-500 hover:underline">

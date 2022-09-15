@@ -12,10 +12,6 @@ const Github = () => {
     return <p>loading...</p>;
   }
 
-  if (error) {
-    return <p>{error}</p>;
-  }
-
   return (
     <div>
       <button
