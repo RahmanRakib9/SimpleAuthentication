@@ -31,7 +31,7 @@ const ResetPassword = () => {
 
   //clear input after email sent
   function clearInput() {
-    document.getElementById("resetButton").value = " ";
+    document.getElementById("resetButton").value = "";
   }
 
   return (
@@ -82,7 +82,6 @@ const ResetPassword = () => {
 
         {/* reset button */}
         <button
-          disabled={!email}
           className="btn btn-primary w-full"
           onClick={async () => {
             await sendPasswordResetEmail(email);

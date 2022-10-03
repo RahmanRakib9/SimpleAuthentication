@@ -81,7 +81,7 @@ const ResetPassword = () => {
         {/* email field end here */}
 
         {/* reset button */}
-        <button
+        <button 
           disabled={!email}
           className="btn btn-primary w-full"
           onClick={async () => {

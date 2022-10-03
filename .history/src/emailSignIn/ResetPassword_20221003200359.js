@@ -29,11 +29,6 @@ const ResetPassword = () => {
     window.location.reload();
   };
 
-  //clear input after email sent
-  function clearInput() {
-    document.getElementById("resetButton").value = " ";
-  }
-
   return (
     <section className="flex justify-center items-center h-screen">
       <div>
@@ -48,7 +43,6 @@ const ResetPassword = () => {
         {/* email field start from here */}
         <div className="form-control w-full max-w-xs">
           <input
-            id="resetButton"
             type="email"
             placeholder="Email"
             className="input input-bordered w-full max-w-xs"
@@ -78,27 +72,17 @@ const ResetPassword = () => {
             )}
           </label>
         </div>
-        {/* email field end here */}
-
-        {/* reset button */}
         <button
-          disabled={!email}
           className="btn btn-primary w-full"
           onClick={async () => {
             await sendPasswordResetEmail(email);
-            alert(
-              "An Email has been sent to you,Please check your spam folder"
-            );
-            clearInput();
+            alert("an email sent");
           }}
         >
           Get Reset Link
         </button>
         <p className="mt-3 text-center ">
-          Never Mind!{" "}
-          <Link to="/login" className="underline">
-            Take me back to sign in
-          </Link>
+          Never Mind! <Link to="/login" className="underline">Take me back to sign in</Link>
         </p>
       </div>
     </section>

@@ -82,7 +82,7 @@ const ResetPassword = () => {
 
         {/* reset button */}
         <button
-          disabled={!email}
+          disabled={!email?.type===""}
           className="btn btn-primary w-full"
           onClick={async () => {
             await sendPasswordResetEmail(email);
